@@ -1,0 +1,33 @@
+{% extends "skeleton.html" %}
+{% block title %}Car Table{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block after_nav %}
+{% endblock %}
+{% block content %}
+<div class="row center-align">
+    <h1 class="header center grey-text">ADDING NEW ROW</h1>
+    <div class="col s4">
+        <br><br><br><br><br><br>
+       
+            <a class="btn-floating btn-large waves-effect waves-light red" href="{{ url_for('car_table') }}"><i class="material-icons">remove</i></a>
+            <p class="red-text">table page</p>
+
+    </div>
+    <div class="col s4">
+        <form action="{{ url_for('add_car_row') }}" method="post"> 
+            <label for="plate"><h1>plate</h1></label>           
+                <input type="text" name="plate" class="center-align">
+                <p class="red-text">
+                    {{ msg }}
+                </p>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+        </form>
+        <br><br><br>
+    </div>
+    <div class="col s4"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "skeleton.html" %}
+{% block title %}Car Table{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block msg %}Hello, {{ session['username'] }}!{% endblock %}
+{% block  msg2 %}
+<h4 class="center-align grey-text">Have a nice job</h4>
+{% endblock %}
+{% block after_nav %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="row center-align">
+    <div class="col s12">
+        <br><br>
+        <table class="centered" id="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Plate</th>
+                    <th>Model</th>
+                    <th>Color</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if table %}
+                    {% for item in table %}
+                <tr>
+                    <td>{{ item[0] }}</td>
+                    <td>{{ item[1] }}</td>
+                    <td class="plate">{{ item[2] }}</td>
+                    <td>{{ item[3] }}</td>
+                    <td>{{ item[4] }}</td>
+                    <td><button class="waves-effect waves-light btn red"><i class="material-icons">delete</i></button></td>
+                </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        {% if not table %}
+        <div class="center-align">
+            <h1 class="center-align">Empty Table</h1>
+        {% endif %}
+            <h5>Choose one option</h5>
+            <br>
+            <div class="row">
+                <div class="col s3"></div>
+                <div class="col s2">
+                    <a href="{{ url_for('new_car', msg='fill the empty places') }}" class="waves-effect waves-light btn-large red"><i class="material-icons">directions_car</i></a>
+                    <p class="center-align">new car</p>
+                </div>
+                <div class="col s2">
+                    <a href="{{ url_for('add_table_row', msg='enter with the car plate') }}" class="waves-effect waves-light btn-large red"><i class="material-icons">local_parking</i></a>
+                    <p class="center-align">add car</p>
+                </div>
+                <div class="col s2">
+                    <a href="{{ url_for('new_client', msg='fill the empty places') }}" class="waves-effect waves-light btn-large red"><i class="material-icons">person_add</i></a>
+                    <p class="center-align">new client</p>
+                </div>
+                <div class="col s3"></div>
+            </div>
+        </div>
+        <br> 
+    </div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/car_table.js') }}"></script>
+{% endblock %}

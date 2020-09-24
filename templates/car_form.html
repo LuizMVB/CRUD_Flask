@@ -1,0 +1,46 @@
+{% extends "skeleton.html" %}
+{% block title %}Car Form{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block after_nav %}
+{% endblock %}
+{% block content %}
+<br>
+<div class="row center-align red lighten-5">
+    <div class="col s12 center-align">
+        <div class="row center-align">
+            <h1 class="header center grey-text">CREATING A NEW CAR</h1>
+            <form action="{{ url_for('create_car') }}" method="post">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">drive_eta</i>
+                    <input id="plate" name="plate" type="text" class="validate">
+                    <label for="plate">plate</label>
+                  </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">create</i>
+                    <input id="model" name="model" type="text" class="validate">
+                    <label for="model">model</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">color_lens</i>
+                    <input id="color" name="color" type="text" class="validate">
+                    <label for="color">color</label>
+                  </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="owner" name="owner"  type="text" class="validate">
+                    <label for="owner">owner's username</label>
+                </div>
+                <br><br>
+                <div class="input-field col s12 center-align">
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <p class="red-text">{{ msg }}</p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

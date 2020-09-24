@@ -1,0 +1,40 @@
+{% extends "skeleton.html" %}
+{% block title %}Car Table{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block logout %}{% endblock %}
+{% block after_nav %}
+{% endblock %}
+{% block content %}
+<br>
+<div class="row center-align red lighten-5">
+    <h1 class="header center grey-text">LOGIN</h1>
+    <div class="col s4">
+    </div>
+    <div class="col s4">
+        <form action="{{ url_for('send') }}" method="post">
+            <br><br>
+            <label for="username"><h5>username</h5></label>
+            <input class="center-align" type="text" name="username">
+            <label for="password"><h5>password</h5></label>
+            <input class="center-align" type="password" name="password">
+            <p class="red-text">{{ msg }}
+                {% if msg == 'try again or ' %}
+                    <a href="{{ url_for('create_account', msg='please fill in the fields above') }}">create an account</a>
+                {% endif %}
+            </p>
+            <br>
+            <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+            <br><br>
+        </form>
+        
+        <br>
+        <a href="{{ url_for('create_account', msg='please fill in the fields above') }}">sing in</a>
+        <br><br>
+    </div>
+    <div class="col s4"></div>
+</div>
+{% endblock %}
